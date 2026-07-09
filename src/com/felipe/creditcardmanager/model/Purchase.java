@@ -1,3 +1,5 @@
+package com.felipe.creditcardmanager.model;
+
 import java.time.LocalDate;
 
 /**
@@ -18,7 +20,7 @@ public class Purchase {
      */
     public Purchase(double value, String description){
         if(value < 0){
-            throw new IllegalArgumentException("valores negativos são inválidos" + value);
+            throw new IllegalArgumentException("valores negativos são inválidos: " + value);
         }
         this.value = value;
         this.description = description;
@@ -35,5 +37,10 @@ public class Purchase {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    @Override
+    public String toString() {
+        return getDescription() + " - " + "R$" + getValue() + " - " +  getDate();
     }
 }

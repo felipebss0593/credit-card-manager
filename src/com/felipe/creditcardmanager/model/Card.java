@@ -1,3 +1,5 @@
+package com.felipe.creditcardmanager.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Card {
     private double creditLimit = 2000;
     private double availableLimit;
     private int number;
+    private Customer owner;
 
     //cliente pode ter múltiplas compras;lista começa vazia e cresce conforme compras são adicionadas;
     private List<Purchase> shoppingList = new ArrayList<>();
@@ -19,8 +22,10 @@ public class Card {
      * Cria um novo cartão.
      * O number é gerado automaticamente pela classe e não pode ser definido manualmente.
      *
+     * @param owner o dono do cartão.
      */
-    public Card(){
+    public Card(Customer owner){
+        this.owner = owner;
         this.availableLimit = this.creditLimit;
 
         //pega o valor atual antes de incrementar, pra Numbers começarem em 1;
@@ -58,10 +63,24 @@ public class Card {
         return number;
     }
 
+    public Customer getOwner() {
+        return owner;
+    }
+
     /**
      * Retorna a lista de compras do cartão.
      */
     public List<Purchase> getShoppingList() {
         return shoppingList;
+    }
+
+    @Override
+    public String toString() {
+        String result = "Card: " + number + " - creditLimit: " + creditLimit +
+                " - availableLimit: " + availableLimit + " - owner: " + owner.getName() + "\n";
+        for (Purchase purchase : shoppingList) {
+            result += purchase.toString() + "\n";
+        }
+        return result;
     }
 }
