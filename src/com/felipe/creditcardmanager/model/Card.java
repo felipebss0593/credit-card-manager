@@ -34,15 +34,21 @@ public class Card {
     }
 
     /**
-     * Adiciona a compra na lista de compras.
-     * O limite disponível é atualizado automaticamente pelo metodo.
+     * tenta registrar uma compra no cartão.
+     * se o valor da compra couber no limite disponível, ela é aprovada.
+     * e o limite é descontado. Caso contrário, é recusado, mas ainda assim
+     * fica registrada no histórico de compras do cartão.
      *
+     * @param purchase a compra a ser registrada.
      */
     public void addPurchase(Purchase purchase){
         if(purchase.getValue() <= availableLimit){
+            purchase.approve();
             shoppingList.add(purchase);
             this.availableLimit -= purchase.getValue();
         }else {
+            purchase.decline();
+            shoppingList.add(purchase);
             System.out.println("Valor da compra maior do que o limite disponivel");
         }
     }
