@@ -28,6 +28,20 @@ public class Card {
         nextNumber++;
     }
 
+    /**
+     * Adiciona a compra na lista de compras.
+     * O limite disponível é atualizado automaticamente pelo metodo.
+     *
+     */
+    public void addPurchase(Purchase purchase){
+        if(purchase.getValue() <= availableLimit){
+            shoppingList.add(purchase);
+            this.availableLimit -= purchase.getValue();
+        }else {
+            System.out.println("Valor da compra maior do que o limite disponivel");
+        }
+    }
+
     public static int getNextNumber() {
         return nextNumber;
     }
