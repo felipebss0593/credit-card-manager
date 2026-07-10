@@ -3,6 +3,7 @@ package com.felipe.creditcardmanager;
 import com.felipe.creditcardmanager.model.Card;
 import com.felipe.creditcardmanager.model.Customer;
 import com.felipe.creditcardmanager.model.Purchase;
+import com.felipe.creditcardmanager.model.PurchaseValueComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,11 +14,11 @@ public class Main {
 
         Card card1 = new Card(customer1);
 
-        Purchase purchase1 = new Purchase(500,"Calça da Renner");
+        Purchase purchase1 = new Purchase(500,"Calça da Renner",2);
 
-        Purchase purchase2 = new Purchase(2500,"PS5");
+        Purchase purchase2 = new Purchase(2500,"PS5",5);
 
-        Purchase purchase3 = new Purchase(100, "Lanche");
+        Purchase purchase3 = new Purchase(100, "Lanche",1);
 
         ArrayList<Purchase> listaTeste = new ArrayList<>();
         listaTeste.add(purchase1);
@@ -25,6 +26,7 @@ public class Main {
         listaTeste.add(purchase3);
 
         Collections.sort(listaTeste);
+        Collections.sort(listaTeste, new PurchaseValueComparator());
 
         card1.addPurchase(purchase1);
         card1.addPurchase(purchase2);
