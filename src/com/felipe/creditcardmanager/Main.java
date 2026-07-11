@@ -33,5 +33,6 @@ public class Main {
 
         System.out.println(card1);
         System.out.println(listaTeste);
+        System.out.println(customer1.getTotalSpent());
     }
 }

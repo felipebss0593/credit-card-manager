@@ -47,4 +47,19 @@ public class Customer {
     public List<Card> getCards() {
         return cards;
     }
+
+    /**
+     * Soma o valor total gasto pelo cliente, somando as compras aprovadas
+     * de todos os seus cartões.
+     * @return o valor total gasto pelo cliente.
+     */
+    public double getTotalSpent(){
+        double totalSpent = 0;
+        for(Card percorreListCards: cards){
+            for(Purchase percorreListaAprovada: percorreListCards.getApprovedPurchases()){
+                totalSpent += percorreListaAprovada.getValue();
+            }
+        }
+        return totalSpent;
+    }
 }

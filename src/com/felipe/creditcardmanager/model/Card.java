@@ -17,6 +17,34 @@ public class Card {
     //cliente pode ter múltiplas compras;lista começa vazia e cresce conforme compras são adicionadas;
     private List<Purchase> shoppingList = new ArrayList<>();
 
+    /**
+     * Filtra a lista de compras para adicionar na lista de compras aprovadas.
+     * @return lista de compras aprovadas.
+     */
+    public List<Purchase> getApprovedPurchases(){
+        ArrayList<Purchase> listApproved = new ArrayList<>();
+        for(Purchase percorreLista: shoppingList){
+            if(percorreLista.getStatus() == PurchaseStatus.APPROVED){
+                listApproved.add(percorreLista);
+            }
+        }
+        return listApproved;
+    }
+
+    /**
+     * Filtra a lista de compras para adicionar na lista de compras recusadas.
+     * @return lista de compras recusadas.
+     */
+    public List<Purchase> getDeclinedPurchases(){
+        ArrayList<Purchase> listDeclined = new ArrayList<>();
+        for(Purchase percorreLista: shoppingList){
+            if(percorreLista.getStatus() == PurchaseStatus.DECLINED){
+                listDeclined.add(percorreLista);
+            }
+        }
+        return listDeclined;
+    }
+
 
     /**
      * Cria um novo cartão.
@@ -26,6 +54,7 @@ public class Card {
      */
     public Card(Customer owner){
         this.owner = owner;
+        owner.getCards().add(this);
         this.availableLimit = this.creditLimit;
 
         //pega o valor atual antes de incrementar, pra Numbers começarem em 1;
