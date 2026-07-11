@@ -62,4 +62,9 @@ public class Customer {
         }
         return totalSpent;
     }
+
+    @Override
+    public String toString() {
+        return "name: " + getName() + " - " + "ID: " + getId() + " - " + "Cartões: " + getCards().size() + " - " + "total de gastos: R$" + getTotalSpent();
+    }
 }

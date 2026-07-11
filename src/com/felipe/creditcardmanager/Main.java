@@ -4,6 +4,7 @@ import com.felipe.creditcardmanager.model.Card;
 import com.felipe.creditcardmanager.model.Customer;
 import com.felipe.creditcardmanager.model.Purchase;
 import com.felipe.creditcardmanager.model.PurchaseValueComparator;
+import com.felipe.creditcardmanager.service.Bank;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +12,8 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         Customer customer1 = new Customer("Felipe");
+        Customer customer2 = new Customer("Kauan");
+        Customer customer3 = new Customer("Bianca");
 
         Card card1 = new Card(customer1);
 
@@ -34,5 +37,14 @@ public class Main {
         System.out.println(card1);
         System.out.println(listaTeste);
         System.out.println(customer1.getTotalSpent());
+
+        Bank bank = new Bank();
+        bank.addCustomer("Felipe");
+        bank.addCustomer("Kauan");
+        bank.addCustomer("Bianca");
+
+        for(Customer customer: bank.getCustomerList()){
+            System.out.println(customer);
+        }
     }
 }
