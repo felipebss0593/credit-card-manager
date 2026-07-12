@@ -21,6 +21,20 @@ public class Bank {
         return customer;
     }
 
+    /**
+     * Percorre a lista para achar o cliente com o id informado.
+     * @param id id do cliente a ser buscado.
+     * @return o cliente encontrado, ou null se nenhum cliente tiver esse id.
+     */
+    public Customer findCustomerById(int id){
+        for(Customer customer: customerList){
+            if(customer.getId() == id){
+                return customer;
+            }
+        }
+        return null;
+    }
+
     public List<Customer> getCustomerList() {
         return customerList;
     }

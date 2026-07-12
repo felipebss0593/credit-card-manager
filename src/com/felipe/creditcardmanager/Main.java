@@ -1,4 +1,5 @@
 package com.felipe.creditcardmanager;
+import com.felipe.creditcardmanager.model.Card;
 import com.felipe.creditcardmanager.model.Customer;
 import com.felipe.creditcardmanager.service.Bank;
 
@@ -32,43 +33,64 @@ public class Main {
             scanner.nextLine();
 
             switch (option) {
-                case 1:
+                case 1: {
                     System.out.println("Digite o nome do cliente:");
                     String name = scanner.nextLine();
                     Customer customer = bank.addCustomer(name);
                     System.out.println("Cliente cadastrado com sucesso!");
                     System.out.println(customer);
                     break;
-                case 2:
-                    //dois
+                }
+                case 2: {
+                    System.out.println("Qual o Id do cliente:");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Cliente não existe.");
+                    }else{
+                        Card card = new Card(customer);
+                        System.out.println("Cartão criado com sucesso.");
+                        System.out.println(card);
+                    }
                     break;
-                case 3:
+                }
+                case 3: {
                     //tres
                     break;
-                case 4:
+                }
+                case 4: {
                     //quatro
                     break;
-                case 5:
+                }
+                case 5: {
                     //cinco
                     break;
-                case 6:
+                }
+                case 6: {
                     //seis
                     break;
-                case 7:
+                }
+                case 7: {
                     //sete
                     break;
-                case 8:
+                }
+                case 8: {
                     //oito
                     break;
-                case 9:
+                }
+                case 9: {
                     //nove
                     break;
-                case 10:
+                }
+                case 10: {
                     //dez
                     break;
-                default:
+                }
+                default: {
                     //erro
                     break;
+                }
             }
 
         }
