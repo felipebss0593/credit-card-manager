@@ -1,50 +1,78 @@
 package com.felipe.creditcardmanager;
-
-import com.felipe.creditcardmanager.model.Card;
 import com.felipe.creditcardmanager.model.Customer;
-import com.felipe.creditcardmanager.model.Purchase;
-import com.felipe.creditcardmanager.model.PurchaseValueComparator;
 import com.felipe.creditcardmanager.service.Bank;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Scanner;
 
+/**
+ * Ponto de entrada do sistema de cartão de crédito.
+ * Exibe o menu interativo e direciona para as operações do sistema.
+ */
 public class Main {
     public static void main(String[] args) {
-        Customer customer1 = new Customer("Felipe");
-        Customer customer2 = new Customer("Kauan");
-        Customer customer3 = new Customer("Bianca");
-
-        Card card1 = new Card(customer1);
-
-        Purchase purchase1 = new Purchase(500,"Calça da Renner",2);
-
-        Purchase purchase2 = new Purchase(2500,"PS5",5);
-
-        Purchase purchase3 = new Purchase(100, "Lanche",1);
-
-        ArrayList<Purchase> listaTeste = new ArrayList<>();
-        listaTeste.add(purchase1);
-        listaTeste.add(purchase2);
-        listaTeste.add(purchase3);
-
-        Collections.sort(listaTeste);
-        Collections.sort(listaTeste, new PurchaseValueComparator());
-
-        card1.addPurchase(purchase1);
-        card1.addPurchase(purchase2);
-
-        System.out.println(card1);
-        System.out.println(listaTeste);
-        System.out.println(customer1.getTotalSpent());
-
+        Scanner scanner = new Scanner(System.in);
         Bank bank = new Bank();
-        bank.addCustomer("Felipe");
-        bank.addCustomer("Kauan");
-        bank.addCustomer("Bianca");
 
-        for(Customer customer: bank.getCustomerList()){
-            System.out.println(customer);
+        int option = 1;
+
+        while(option != 0){
+            System.out.println("=== SISTEMA DE CARTÃO DE CRÉDITO ===");
+            System.out.println("1 - Cadastrar cliente");
+            System.out.println("2 - Cadastrar cartão para um cliente");
+            System.out.println("3 - Cadastrar compra");
+            System.out.println("4 - Ver compras aprovadas");
+            System.out.println("5 - Ver compras recusadas");
+            System.out.println("6 - Ver histórico completo (ordenado por data)");
+            System.out.println("7 - Ver maior compra");
+            System.out.println("8 - Ver menor compra");
+            System.out.println("9 - Ver valor total gasto por cliente");
+            System.out.println("10 - Ver limite disponível de um cartão");
+            System.out.println("0 - Sair");
+            option = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (option) {
+                case 1:
+                    System.out.println("Digite o nome do cliente:");
+                    String name = scanner.nextLine();
+                    Customer customer = bank.addCustomer(name);
+                    System.out.println("Cliente cadastrado com sucesso!");
+                    System.out.println(customer);
+                    break;
+                case 2:
+                    //dois
+                    break;
+                case 3:
+                    //tres
+                    break;
+                case 4:
+                    //quatro
+                    break;
+                case 5:
+                    //cinco
+                    break;
+                case 6:
+                    //seis
+                    break;
+                case 7:
+                    //sete
+                    break;
+                case 8:
+                    //oito
+                    break;
+                case 9:
+                    //nove
+                    break;
+                case 10:
+                    //dez
+                    break;
+                default:
+                    //erro
+                    break;
+            }
+
         }
+
+
     }
 }
