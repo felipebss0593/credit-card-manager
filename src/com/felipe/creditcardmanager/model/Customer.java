@@ -63,6 +63,20 @@ public class Customer {
         return totalSpent;
     }
 
+    /**
+     * Percorre a lista para achar o cartão com o number informado.
+     * @param number number do cartão a ser buscado.
+     * @return o cartão encontrado, ou null se nenhum cartão tiver esse number.
+     */
+    public Card findCardByNumber(int number){
+        for(Card card : cards){
+            if(card.getNumber() == number){
+                return card;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "name: " + getName() + " - " + "ID: " + getId() + " - " + "Cartões: " + getCards().size() + " - " + "total de gastos: R$" + getTotalSpent();
