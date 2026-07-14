@@ -94,7 +94,36 @@ public class Main {
                     break;
                 }
                 case 4: {
-                    //quatro
+                    System.out.println("Qual o Id do cliente ? ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if (customer == null) {
+                        System.out.println("Cliente não existe.");
+                    } else {
+                        if (customer.getCards().isEmpty()) {
+                            System.out.println("Este cliente não tem cartão.");
+                        } else {
+                            for (Card card : customer.getCards()) {
+                                System.out.println(card);
+                            }
+                            System.out.println("Qual número de cartão o usuário quer usar ? ");
+                            int number = scanner.nextInt();
+                            scanner.nextLine();
+                            Card selectedCard = customer.findCardByNumber(number);
+                            if (selectedCard == null) {
+                                System.out.println("Cartão não encontrado");
+                            } else {
+                                if (selectedCard.getApprovedPurchases().isEmpty()) {
+                                    System.out.println("Não existe compras aprovadas nesse cartão");
+                                } else {
+                                    for (Purchase approvedPurchase : selectedCard.getApprovedPurchases()) {
+                                        System.out.println(approvedPurchase);
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
                 }
                 case 5: {
