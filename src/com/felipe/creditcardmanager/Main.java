@@ -4,6 +4,7 @@ import com.felipe.creditcardmanager.model.Customer;
 import com.felipe.creditcardmanager.model.Purchase;
 import com.felipe.creditcardmanager.service.Bank;
 
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -160,7 +161,37 @@ public class Main {
                     break;
                 }
                 case 6: {
-                    //seis
+                    System.out.println("Qual o Id do cliente ? ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Cliente não existe.");
+                    }else{
+                        if(customer.getCards().isEmpty()){
+                            System.out.println("Este cliente não tem cartão.");
+                        }else{
+                            for(Card card: customer.getCards()){
+                                System.out.println(card);
+                            }
+                            System.out.println("Qual cartão o usuário quer ver o histórico completo (ordenado por data) ? ");
+                            int number = scanner.nextInt();
+                            scanner.nextLine();
+                            Card selectedCard = customer.findCardByNumber(number);
+                            if(selectedCard == null){
+                                System.out.println("Cartão não encontrado");
+                            }else{
+                                if(selectedCard.getShoppingList().isEmpty()){
+                                    System.out.println("Não existe compras nesse cartão");
+                                }else{
+                                    Collections.sort(selectedCard.getShoppingList());
+                                    for(Purchase purchase: selectedCard.getShoppingList()){
+                                        System.out.println(purchase);
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
                 }
                 case 7: {
