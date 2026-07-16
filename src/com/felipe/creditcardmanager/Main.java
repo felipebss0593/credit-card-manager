@@ -292,13 +292,11 @@ public class Main {
                     break;
                 }
                 default: {
-                    //erro
+                    System.out.println("Número invalido.");
                     break;
                 }
             }
 
         }
-
-
     }
 }
