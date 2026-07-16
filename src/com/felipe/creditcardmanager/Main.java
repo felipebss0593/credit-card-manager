@@ -2,6 +2,7 @@ package com.felipe.creditcardmanager;
 import com.felipe.creditcardmanager.model.Card;
 import com.felipe.creditcardmanager.model.Customer;
 import com.felipe.creditcardmanager.model.Purchase;
+import com.felipe.creditcardmanager.model.PurchaseValueComparator;
 import com.felipe.creditcardmanager.service.Bank;
 
 import java.util.Collections;
@@ -195,11 +196,59 @@ public class Main {
                     break;
                 }
                 case 7: {
-                    //sete
+                    System.out.println("Qual o Id do cliente ? ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Cliente não existe.");
+                    }else{
+                        if(customer.getCards().isEmpty()){
+                            System.out.println("Este cliente não tem cartão.");
+                        }else{
+                            for(Card card: customer.getCards()){
+                                System.out.println(card);
+                            }
+                            System.out.println("Qual cartão o usuário quer ver a maior compra ? ");
+                            int number = scanner.nextInt();
+                            scanner.nextLine();
+                            Card selectedCard = customer.findCardByNumber(number);
+                            if(selectedCard == null){
+                                System.out.println("Cartão não encontrado");
+                            }else{
+                                Purchase purchase = Collections.max(selectedCard.getShoppingList(), new PurchaseValueComparator());
+                                System.out.println(purchase);
+                            }
+                        }
+                    }
                     break;
                 }
                 case 8: {
-                    //oito
+                    System.out.println("Qual o Id do cliente ? ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Cliente não existe.");
+                    }else{
+                        if(customer.getCards().isEmpty()){
+                            System.out.println("Este cliente não tem cartão.");
+                        }else{
+                            for(Card card: customer.getCards()){
+                                System.out.println(card);
+                            }
+                            System.out.println("Qual cartão o usuário quer ver a menor compra ? ");
+                            int number = scanner.nextInt();
+                            scanner.nextLine();
+                            Card selectedCard = customer.findCardByNumber(number);
+                            if(selectedCard == null){
+                                System.out.println("Cartão não encontrado");
+                            }else{
+                                Purchase purchase = Collections.min(selectedCard.getShoppingList(), new PurchaseValueComparator());
+                                System.out.println(purchase);
+                            }
+                        }
+                    }
                     break;
                 }
                 case 9: {
