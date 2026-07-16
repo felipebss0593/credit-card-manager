@@ -265,7 +265,30 @@ public class Main {
                     break;
                 }
                 case 10: {
-                    //dez
+                    System.out.println("Qual o Id do cliente ? ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Este cliente não existe.");
+                    }else{
+                        if(customer.getCards().isEmpty()){
+                            System.out.println("Este cliente não tem cartão.");
+                        }else{
+                            for(Card card: customer.getCards()){
+                                System.out.println(card);
+                            }
+                            System.out.println("Qual cartão o usuário quer ver o limite disponível ? ");
+                            int number = scanner.nextInt();
+                            scanner.nextLine();
+                            Card selectedCard = customer.findCardByNumber(number);
+                            if(selectedCard == null){
+                                System.out.println("Cartão não encontrado.");
+                            }else{
+                                System.out.println("Limite disponível: R$" + selectedCard.getAvailableLimit());
+                            }
+                        }
+                    }
                     break;
                 }
                 default: {
