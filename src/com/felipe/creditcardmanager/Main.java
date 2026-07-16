@@ -252,7 +252,16 @@ public class Main {
                     break;
                 }
                 case 9: {
-                    //nove
+                    System.out.println("Qual o ID do cliente ?");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    Customer customer = bank.findCustomerById(id);
+                    if(customer == null){
+                        System.out.println("Este cliente não existe.");
+                    }else{
+                        double selectedCustomer = customer.getTotalSpent();
+                        System.out.println("Valor total gasto do cliente: R$" + selectedCustomer);
+                    }
                     break;
                 }
                 case 10: {
